@@ -16,9 +16,12 @@ class ViewController: UIViewController {
     
     var balloons:[Balloon] = []//array of instances
     
+    var currentIndex = 0 //track our index
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.createBalloons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +30,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func nextBalloonBarButtonItemPressed(sender: UIBarButtonItem) {
+        let balloon = balloons [currentIndex]
+        
+        balloonsLabel.text = "\(balloon.number) balloon"
+        backgroundImageView.image = balloon.image
+        
+        currentIndex += 1
     }
 
     //this function shows a random photo based on the random number showed in the for loop
@@ -48,7 +57,7 @@ class ViewController: UIViewController {
                 balloon.image = UIImage(named: "RedBalloon4.jpg")
             }
             
-            self.balloons.append(balloon)
+            self.balloons.append(balloon);
         }
     }
 }
